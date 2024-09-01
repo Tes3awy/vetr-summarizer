@@ -15,13 +15,33 @@ This tool summarizes data from any APIC collected by [vetr-collector](https://gi
 
 ## Objective
 
-This tool processes data collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector) for the ACI health check and displays it in an pretty HTML format. This tool can also be run from any computer having `aci-vetr-data` collected from any APIC.
+This tool processes data collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector) for the ACI health check and displays it in a pretty HTML format. This tool can also be run from any computer having `aci-vetr-data` collected from any APIC.
+
+The `aci-vetr-data` directory you get from `vetr-collector v3.3.0` includes **91** raw JSON files.
+
+```bash
+$ ls aci-vetr-data
+apPlugin.json
+bgpRRNodePEp.json
+configRsRemotePath.json
+coopPol.json
+ctxClassCnt.json
+datetimeNtpProv.json
+datetimePol.json
+epControlP.json
+epIpAgingP.json
+epLoopProtectP.json
+...
+<output_truncated>
+```
 
 _A sample preview of the output HTML_
 
 ![Preview](./assets/preview.jpg)
 
-Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. _All excluded keys can be found in `config/excluded_keys` file._ You can also customize the keys to exclude according to your own case.
+Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. _All excluded keys can be found in `config/excluded_keys` file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_
+
+> Raw JSON files with empty `imdata` and `totalCount` equal to `0` are not presented in the HTML `vetr-summary.html` summary report.
 
 ## Installation
 
