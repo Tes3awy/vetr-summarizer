@@ -1,5 +1,12 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/Tes3awy/vetr-summarizer)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/vetr-summarizer)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat-square&labelColor=ef8336)](https://pycqa.github.io/isort/)
+![PyPI - License](https://img.shields.io/pypi/l/vetr-summarizer)
+![PyPI - Version](https://img.shields.io/pypi/v/vetr-summarizer)
+![PyPI - Status](https://img.shields.io/pypi/status/vetr-summarizer)
+![Pepy Total Downlods](https://img.shields.io/pepy/dt/vetr-summarizer)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/Tes3awy/vetr-summarizer/main?logo=github)
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/Tes3awy)
 
 ## Table of Contents
