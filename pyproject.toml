@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vetr-summarizer"
+version = "0.1.0"
+description = "A package to generate HTML reports from ACI VETR data JSON files."
+authors = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
+maintainers = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
+license = { file = "LICENSE" }
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9.0, <4"
+keywords = [
+    "cisco",
+    "aci",
+    "vetr-collector",
+    "devnet",
+    "datacenter",
+    "summarizer",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: System :: Systems Administration",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+
+dependencies = ["jinja2==3.1.4"]
+
+[project.optional-dependencies]
+dev = ["pre-commit", "bumpver", "black", "isort"]
+
+[project.urls]
+Homepage = "https://github.com/Tes3awy/vetr-summarizer"
+Repository = "https://github.com/Tes3awy/vetr-summarizer"
+Issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
+"Say Thanks!" = "https://saythanks.io/to/Tes3awy"
+Changelog = "https://github.com/Tes3awy/vetr-summarizer/main/CHANGELOG.md"
+
+[tool.setuptools]
+platforms = ["any"]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"vetr_summarizer" = ["templates/*.j2", "config/excluded_keys"]
+
+[project.scripts]
+vetr-summarizer = "vetr_summarizer.__main__:main"
+
+[tool.bumpver]
+current_version = "0.1.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
+tag_message = "{new_version}"
+tag_scope = "default"
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['^version = "{version}"', '^current_version = "{version}"']
+"src/vetr_summarizer/__init__.py" = ['^__version__ = "{version}"$']
