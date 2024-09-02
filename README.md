@@ -13,8 +13,12 @@
 
 1. [vetR Summarizer](#vetr-summarizer)
 2. [Objective](#objective)
-3. [Installation](#installation)
-4. [Usage](#usage)
+3. [How it Works](#how-it-works)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Use Case](#use-case)
+
+![ACI](./assets/aci.jpg)
 
 ## vetR Summarizer
 
@@ -22,7 +26,7 @@ This tool summarizes data from any APIC collected by [vetr-collector](https://gi
 
 ## Objective
 
-This tool processes data collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector) for the ACI health check and displays it in a pretty HTML format. This tool can also be run from any computer having `aci-vetr-data` collected from any APIC.
+This tool processes data collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector) for the ACI health check and displays it in a pretty HTML tabluar format. This tool can also be run from any computer having `aci-vetr-data` collected from any APIC.
 
 The `aci-vetr-data` directory you get from `vetr-collector v3.3.0` includes **91** raw JSON files.
 
@@ -46,7 +50,15 @@ _A sample preview of the output HTML_
 
 ![Preview](./assets/preview.jpg)
 
-Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. _All excluded keys can be found in `config/excluded_keys` file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_
+## How it works
+
+This tool visualizes data collection for the ACI health check from [vetr-collector](https://github.com/brightpuddle/vetr-collector).
+
+Once the analysis is complete, the tool creates a `vetr-summary.html` file. This file displays the raw JSON data in a [DataTable](https://datatables.net/) tabular format. DataTable adds the ability to easily search for properties in concern.
+
+Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. 
+
+> _All excluded keys can be found in `config/excluded_keys` file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_.
 
 > Raw JSON files with empty `imdata` and `totalCount` equal to `0` are not presented in the HTML `vetr-summary.html` summary report.
 
@@ -87,6 +99,17 @@ $ vetr-summarizer "/path/to/aci-vetr-data"
 
 HTML output is written to /path/to/vetr-summary.html
 ```
+
+## Use Case
+
+I was once going through the Cisco Community and found a [question](https://community.cisco.com/t5/application-centric-infrastructure/vetr-zip-logs/td-p/4804529), what is actually vetr zip logs? 
+
+![Question](./assets/q.jpg)
+
+So, I decided to try `vetr-collector` on an environment. But, I got to open each raw JSON file to check whether it has objects and was time-consuming going through all the files. So, I made this package to summarize the output from `vetr-collector` in a pretty HTML tabular format.
+
+
+
 
 ## Author
 
