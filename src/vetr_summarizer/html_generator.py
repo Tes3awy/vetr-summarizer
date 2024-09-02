@@ -10,6 +10,12 @@ def load_excluded_keys(file_path: Path) -> set:
         print(f"WARNING: {file_path} does not exist! No keys will be excluded.")
         return set()
 
+    if file_path.exists() and not file_path.read_text().splitlines():
+        print(
+            f"WARNING: {file_path} does exists but without keys! No keys will be excluded."
+        )
+        return set()
+
     return {
         key.strip()
         for key in Path(file_path).read_text().splitlines()
