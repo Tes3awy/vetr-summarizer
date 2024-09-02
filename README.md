@@ -58,7 +58,7 @@ Once the analysis is complete, the tool creates a `vetr-summary.html` file. This
 
 Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. 
 
-> _All excluded keys can be found in `config/excluded_keys` file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_.
+> _All excluded keys can be found in [`config/excluded_keys`](https://github.com/Tes3awy/vetr-summarizer/tree/main/src/vetr_summarizer/config) file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_.
 
 > Raw JSON files with empty `imdata` and `totalCount` equal to `0` are not presented in the HTML `vetr-summary.html` summary report.
 
@@ -100,6 +100,14 @@ $ vetr-summarizer "/path/to/aci-vetr-data"
 HTML output is written to /path/to/vetr-summary.html
 ```
 
+> With custom excluded keys
+
+```bash
+$ vetr-summarizer -x custom_excluded_keys "/path/to/aci-vetr-data"
+
+HTML output is written to /path/to/vetr-summary.html
+```
+
 ## Use Case
 
 I was once going through the Cisco Community and found a [question](https://community.cisco.com/t5/application-centric-infrastructure/vetr-zip-logs/td-p/4804529), what is actually vetr zip logs? 
@@ -107,9 +115,6 @@ I was once going through the Cisco Community and found a [question](https://comm
 ![Question](./assets/q.jpg)
 
 So, I decided to try `vetr-collector` on an environment. But, I got to open each raw JSON file to check whether it has objects and was time-consuming going through all the files. So, I made this package to summarize the output from `vetr-collector` in a pretty HTML tabular format.
-
-
-
 
 ## Author
 
