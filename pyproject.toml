@@ -1,23 +1,25 @@
 [build-system]
-requires = ["setuptools >= 61.0"]
+requires = ["setuptools >= 61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "vetr-summarizer"
 version = "0.1.0"
-description = "A package to generate HTML reports from ACI VETR data JSON files."
+description = "A Python package for visualizing ACI vetR JSON data"
 authors = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 maintainers = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 license = { file = "LICENSE" }
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9.0, <4"
 keywords = [
-    "cisco",
-    "aci",
+    "Cisco",
+    "ACI",
+    "automation",
     "vetr-collector",
     "devnet",
     "datacenter",
     "summarizer",
+    "JSON",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -39,7 +41,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-dependencies = ["jinja2==3.1.4"]
+dependencies = ["jinja2>=3.0.0"]
 
 [project.optional-dependencies]
 dev = ["pre-commit", "bumpver", "black", "isort"]
@@ -53,13 +55,21 @@ Changelog = "https://github.com/Tes3awy/vetr-summarizer/main/CHANGELOG.md"
 
 [tool.setuptools]
 platforms = ["any"]
+package-dir = { "" = "src" }
 include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"vetr_summarizer" = ["templates/*.j2", "config/excluded_keys"]
+"vetr_summarizer.templates" = ["vetr-data.j2"]
+"vetr_summarizer.config" = ["excluded_keys"]
+
+[tool.setuptools.data-files]
+"vetr-summarizer" = [
+    "src/vetr_summarizer/config/excluded_keys",
+    "src/vetr_summarizer/templates/vetr-data.j2",
+]
 
 [project.scripts]
 vetr-summarizer = "vetr_summarizer.__main__:main"
@@ -77,3 +87,17 @@ tag_scope = "default"
 [tool.bumpver.file_patterns]
 "pyproject.toml" = ['^version = "{version}"', '^current_version = "{version}"']
 "src/vetr_summarizer/__init__.py" = ['^__version__ = "{version}"$']
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+    | \.venv
+    | assets
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
