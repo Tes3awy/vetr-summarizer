@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-US" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>VETR Summarizer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>vetR Summarizer</title>
     <link rel="shortcut icon" href="https://github.com/cisco/cisco.github.io/raw/master/favicon.ico"
         type="image/x-icon" />
     <link rel="stylesheet"
@@ -14,15 +14,15 @@
 
 <body>
     <div class="container-fluid py-4">
-        <h1 class="fs-4 mb-3">VETR Summarizer ({{ accordion_items|length }})</h1>
+        <h1 class="fs-4 mb-3 border-bottom pb-3 mb-3">vetR Summarizer ({{ accordion_items|length }})</h1>
         <div class="accordion accordion-flush" id="accordion">
             {% for item in accordion_items -%}
-            <div class="accordion-item">
+            <div class="mb-3 accordion-item shadow-sm border-0 border-start border-primary-subtle">
                 <div class="accordion-header" id="heading{{ loop.index }}">
                     <button class="accordion-button {% if loop.index != 1 %}collapsed{% endif %}"
                         data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="true"
                         aria-controls="collapse{{ loop.index }}">
-                        <span class="fw-bold">{{ loop.index }}. {{ item.title }}</span>
+                        <span class="fw-bold">{{ item.title }}</span>
                     </button>
                 </div>
                 <div id="collapse{{ loop.index }}"
@@ -47,7 +47,12 @@
         </div>
         <div class="text-center">
             <p class="lead mt-3 mb-1">End of Page</p>
-            <p class="small text-primary mb-0" id="up" role="button" tabindex="10">Back to Top</p>
+            <p class="mb-2 small text-secondary">Made with &hearts; by <a
+                    href="https://github.com/Tes3awy/vetr-summarizer" target="_blank" class="text-decoration-none"
+                    title="vetR Summarizer on GitHub">Osama
+                    Abbas</a>
+            </p>
+            <p id="up" class="small text-primary mb-0" role="button" tabindex="10">Back to Top</p>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -61,10 +66,12 @@
             $('#table{{ loop.index }}').DataTable({
                 info: true,
                 ordering: true,
-                paging: true,
+                paging: {
+                    buttons: 3
+                },
                 lengthMenu: [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, 'All']
+                    [5, 10, 25, -1],
+                    [5, 10, 25, 'All']
                 ]
             });
             {% endfor -%}
