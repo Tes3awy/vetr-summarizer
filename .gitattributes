@@ -1,0 +1,7 @@
+*               text=auto
+*.py            text diff=python
+*.md            text diff=markdown
+*.cfg           text
+LICENSE         text
+.*rc            text
+*.jpg           binary
