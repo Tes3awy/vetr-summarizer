@@ -64,10 +64,20 @@ Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/a
 
 ## Installation
 
-> Install from PyPi
+Install from PyPi
+
+> System-wide
 
 ```bash
 $ pip install --user vetr-summarizer
+```
+
+>  Virtual Environment
+
+```bash
+$ python3 -m venv .venv
+$ source .venv/bin/activate .
+(.venv)$ pip install vetr-summarizer
 ```
 
 ## Usage
@@ -76,7 +86,7 @@ $ pip install --user vetr-summarizer
 
 ```bash
 $ vetr-summarizer --help
-usage: vetr-summarizer [-h] [-f {html}] [-x EXCLUDE_FILE] [-v] directory  
+usage: vetr-summarizer [-h] [-f {html}] [-x EXCLUDED_KEYS_FILE] [-v] directory
 
 Process and summarize aci-vetr-data JSON files into HTML reports.
 
@@ -86,9 +96,9 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -f {html}, --format {html}
-                        Output format (html).
-  -x EXCLUDE_FILE, --exclude-file EXCLUDE_FILE
-                        File containing keys to exclude from the summary HTML report.
+                        Output format (default: html)
+  -x EXCLUDED_KEYS_FILE, --excluded-keys-file EXCLUDED_KEYS_FILE
+                        File with keys to exclude from raw JSON files. (default: excluded_keys)
   -v, --version         show program's version number and exit
 
 Thanks for using vetr-summarizer! :)
