@@ -1,2 +1,3 @@
+include src/vetr_summarizer/templates/base.j2
 include src/vetr_summarizer/templates/vetr-data.j2
 include src/vetr_summarizer/config/excluded_keys

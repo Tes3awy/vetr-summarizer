@@ -62,13 +62,14 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-"vetr_summarizer.templates" = ["vetr-data.j2"]
+"vetr_summarizer.templates" = ["base.j2", "vetr-data.j2"]
 "vetr_summarizer.config" = ["excluded_keys"]
 
 [tool.setuptools.data-files]
 "vetr-summarizer" = [
-    "src/vetr_summarizer/config/excluded_keys",
+    "src/vetr_summarizer/templates/base.j2",
     "src/vetr_summarizer/templates/vetr-data.j2",
+    "src/vetr_summarizer/config/excluded_keys",
 ]
 
 [project.scripts]
