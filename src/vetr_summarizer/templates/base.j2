@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>vetR Summarizer</title>
+    <link rel="shortcut icon" href="https://github.com/cisco/cisco.github.io/raw/master/favicon.ico"
+        type="image/x-icon" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.1.2/css/buttons.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/2.0.4/css/colReorder.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/4.0.1/css/fixedHeader.bootstrap5.min.css" />
+</head>
+
+<body>
+    <div class="container-fluid py-4">
+        {% block content %}{% endblock content %}
+    </div>
+    <p class="lead text-center mb-4">End of Page</p>
+    <footer class="footer text-center border-top bg-light py-3">
+        <p id="up" class="small text-secondary mb-2 d-inline-block" role="button" tabindex="10">Back to Top &uarr;</p>
+        <p class="mb-0 small text-secondary">Made with <span class="text-danger">&hearts;</span> by Osama
+            Abbas &amp; <a href="https://github.com/Tes3awy/vetr-summarizer" target="_blank"
+                class="text-decoration-none" title="vetR Summarizer on GitHub">vetR Summarizer</a>
+        </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/2.0.4/js/dataTables.colReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/4.0.1/js/dataTables.fixedHeader.min.js"></script>
+    {% block js %}{% endblock js %}
+    <script type="text/javascript">
+        document.getElementById('up').addEventListener('click', function () { let h1Tag = document.querySelector('h1').getBoundingClientRect().top; document.documentElement.scrollTo({ top: h1Tag, behavior: 'smooth' }) });
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        function toggleAll(btn) {
+            btn.classList.toggle('btn-outline-primary');
+            btn.classList.toggle('btn-primary');
+        }
+    </script>
+</body>
