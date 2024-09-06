@@ -15,7 +15,7 @@ class VetrSummarizer(object):
 
     def load_json_files(self):
         for json_file in self.directory.glob("*.json"):
-            data = json.loads(json_file.read_text())
+            data: dict = json.loads(json_file.read_text())
             if int(data.get("totalCount", 0)):
                 key = json_file.stem
                 rows = self._process_json_data(data, key)
@@ -25,7 +25,7 @@ class VetrSummarizer(object):
     def _process_json_data(self, data: dict, key: str):
         rows = []
         for item in data.get("imdata", []):
-            attributes = item.get(key, {}).get("attributes", {})
+            attributes: dict[str, str] = item.get(key, {}).get("attributes", {})
             valuable_attrs = {
                 k: v
                 for k, v in attributes.items()
@@ -37,11 +37,10 @@ class VetrSummarizer(object):
 
     def _add_accordion_item(self, title: str, rows: list[dict]):
         headers = rows[0].keys()
-        table_headers = "".join(f"<th>{header}</th>" for header in headers)
-        table_rows = "".join(
-            f"<tr>{''.join(f'<td>{row.get(header, '')}</td>' for header in headers)}</tr>"
-            for row in rows
-        )
+        table_headers = [{"header": header} for header in headers]
+        table_rows = [
+            {header: row.get(header, "") for header in headers} for row in rows
+        ]
         self.accordion_items.append(
             {
                 "title": title,
@@ -64,7 +63,7 @@ class VetrSummarizer(object):
         output_file.write_text(
             html_template.render(accordion_items=self.accordion_items)
         )
-        print(f"HTML report is written to {output_file}")
+        print(f"HTML report is written to {output_file.resolve()}")
 
     def summarize(self):
         self.load_json_files()
