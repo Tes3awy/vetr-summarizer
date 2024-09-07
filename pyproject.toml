@@ -51,7 +51,7 @@ Homepage = "https://github.com/Tes3awy/vetr-summarizer"
 Repository = "https://github.com/Tes3awy/vetr-summarizer"
 Issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
 "Say Thanks!" = "https://saythanks.io/to/Tes3awy"
-Changelog = "https://github.com/Tes3awy/vetr-summarizer/main/CHANGELOG.md"
+Changelog = "https://github.com/Tes3awy/vetr-summarizer/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 platforms = ["any"]
