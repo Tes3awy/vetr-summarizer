@@ -5,17 +5,30 @@
         data-bs-title="This number represents the filtered data from aci-vetr-data. Some JSON files has totalCount equal to 0. These files are discarded by default."
         role="button">({{ accordion_items|length }})</span>
 </h1>
-<div class="d-flex justify-content-end mb-3">
-    <div class="btn-group" role="group" aria-label="actions">
-        <button type="button" id="toggleAll" class="btn btn-primary" data-bs-toggle="collapse"
-            data-bs-target=".multi-collapse" aria-controls=".multi-collapse" onclick="toggleAll(this);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggles"
-                viewBox="0 0 16 16">
-                <path
-                    d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m2.45 0A3.5 3.5 0 0 1 8 3.5 3.5 3.5 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7" />
-            </svg> Toggle All
-        </button>
-    </div>
+<p class="small text-end">
+    Check out <a class="text-decoration-none"
+        href="https://www.cisco.com/c/en/us/td/docs/dcn/whitepapers/cisco-aci-best-practices-quick-summary.html"
+        target="_blank" title="Best Practices Quick Summary">Cisco ACI
+        Best Practices Quick Summary <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+            <path fill-rule="evenodd"
+                d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+        </svg>
+    </a>
+</p>
+<div class="input-group mb-3">
+    <input type="search" class="form-control" id="search" onkeyup="filterAccordions(this)"
+        placeholder="Search for class objects...">
+    <button type="button" id="toggleAll" class="btn btn-primary" data-bs-toggle="collapse"
+        data-bs-target=".multi-collapse" aria-controls=".multi-collapse" onclick="toggleAll(this);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggles"
+            viewBox="0 0 16 16">
+            <path
+                d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m2.45 0A3.5 3.5 0 0 1 8 3.5 3.5 3.5 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7" />
+        </svg> Toggle All
+    </button>
 </div>
 <div class="accordion accordion-flush" id="accordion">
     {% for item in accordion_items -%}
@@ -110,5 +123,21 @@
         });
         {% endfor -%}
     });
+
+    function filterAccordions(elem) {
+        elem.addEventListener('input', function () {
+            const filterText = elem.value.toUpperCase();
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(function (item) {
+                const headerText = item.querySelector('.accordion-header').textContent.toUpperCase();
+                if (!headerText.includes(filterText)) {
+                    item.classList.add('d-none');
+                } else {
+                    item.classList.remove('d-none');
+                }
+            });
+        });
+    }
 </script>
 {% endblock js %}
