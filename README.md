@@ -9,18 +9,22 @@
 ![Commit Activity](https://img.shields.io/github/commit-activity/m/Tes3awy/vetr-summarizer/main?logo=github)
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/Tes3awy)
 
+# vetR Summarizer
+
+A Python package for visualizing ACI vetR JSON data from [vetr-collector](https://github.com/brightpuddle/vetr-collector)
+
 ## Table of Contents
 
-1. [vetR Summarizer](#vetr-summarizer)
+1. [What is vetR Summarizer?](#what-is-vetr-summarizer)
 2. [Objective](#objective)
 3. [How it Works](#how-it-works)
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Use Case](#use-case)
 
-![ACI](./assets/aci.jpg)
+![ACI](https://github.com/Tes3awy/vetr-summarizer/raw/main/assets/aci.jpg)
 
-## vetR Summarizer
+## What is vetR Summarizer?
 
 This tool summarizes data from any APIC collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector).
 
@@ -48,7 +52,7 @@ epLoopProtectP.json
 
 _A sample preview of the output HTML_
 
-![Preview](./assets/preview.jpg)
+![Preview](https://github.com/Tes3awy/vetr-summarizer/raw/main/assets/preview.jpg)
 
 ## How it works
 
@@ -122,7 +126,7 @@ HTML output is written to /path/to/vetr-summary.html
 
 I was once going through the Cisco Community and found a [question](https://community.cisco.com/t5/application-centric-infrastructure/vetr-zip-logs/td-p/4804529), what is actually vetr zip logs? 
 
-![Question](./assets/q.jpg)
+![Question](https://github.com/Tes3awy/vetr-summarizer/raw/main/assets/q.jpg)
 
 So, I decided to try `vetr-collector` on an environment. But, I got to open each raw JSON file to check whether it has objects and was time-consuming going through all the files. So, I made this package to summarize the output from `vetr-collector` in a pretty HTML tabular format.
 
