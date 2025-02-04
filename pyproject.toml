@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vetr-summarizer"
-version = "0.3.3"
+dynamic = ["version"]
 description = "A Python package for visualizing ACI vetR JSON data"
 authors = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 maintainers = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
-license = { file = "LICENSE" }
-readme = { file = "README.md", content-type = "text/markdown" }
+license = "MIT"
+license-files = ["LICENSE", "AUTHORS.md"]
+readme = "README.md"
 requires-python = ">=3.9.0, <4"
 keywords = [
     "Cisco",
@@ -40,23 +41,26 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Typing :: Typed",
 ]
-
 dependencies = ["jinja2>=3.1.0"]
 
 [project.optional-dependencies]
 dev = ["pre-commit", "bumpver", "black", "isort"]
 
 [project.urls]
-Homepage = "https://pypi.org/project/vetr-summarizer/"
-Repository = "https://github.com/Tes3awy/vetr-summarizer"
-Issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
+homepage = "https://pypi.org/project/vetr-summarizer/"
+sourcecode = "https://github.com/Tes3awy/vetr-summarizer"
+download = "https://github.com/Tes3awy/vetr-summarizer/archive/refs/tags/0.3.3.zip"
+changelog = "https://github.com/Tes3awy/vetr-summarizer/blob/main/CHANGELOG.md"
+issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
 "Say Thanks!" = "https://saythanks.io/to/Tes3awy"
-Changelog = "https://github.com/Tes3awy/vetr-summarizer/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 platforms = ["any"]
 package-dir = { "" = "src" }
 include-package-data = true
+
+[tool.setuptools.dynamic]
+version = { attr = "vetr_summarizer.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -86,7 +90,10 @@ tag_message = "{new_version}"
 tag_scope = "default"
 
 [tool.bumpver.file_patterns]
-"pyproject.toml" = ['^version = "{version}"', '^current_version = "{version}"']
+"pyproject.toml" = [
+    '^current_version = "{version}"',
+    '^download = "https://github.com/Tes3awy/vetr-summarizer/archive/refs/tags/{version}.zip"',
+]
 "src/vetr_summarizer/__init__.py" = ['^__version__ = "{version}"$']
 
 [tool.black]
