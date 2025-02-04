@@ -48,20 +48,20 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            {% for header in item.headers %}
+                            {% for header in item.headers -%}
                             <th scope="col">{{ header.header }}</th>
-                            {% endfor %}
+                            {% endfor -%}
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        {% for row in item.rows %}
+                        {% for row in item.rows -%}
                         <tr>
                             <th scope="row">{{ "{:,}".format(loop.index) }}</th>
-                            {% for header in item.headers %}
+                            {% for header in item.headers -%}
                             <td>{{ row[header.header] }}</td>
-                            {% endfor %}
+                            {% endfor -%}
                         </tr>
-                        {% endfor %}
+                        {% endfor -%}
                     </tbody>
                 </table>
             </div>

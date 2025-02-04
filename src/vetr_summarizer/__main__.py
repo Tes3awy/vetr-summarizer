@@ -37,17 +37,14 @@ def main():
         type=Path,
         required=False,
         default=Path(__file__).parent / "config" / "excluded_keys",
-        help="File with keys to exclude from raw JSON files.",
+        help="File with keys-to-exclude from raw JSON files.",
     )
     parser.add_argument(
         "-v", "--version", action="version", version=f"%(prog)s version {__version__}"
     )
     args = parser.parse_args()
 
-    config = Config(
-        format=args.format,
-        excluded_keys_file=args.excluded_keys_file,
-    )
+    config = Config(format=args.format, excluded_keys_file=args.excluded_keys_file)
 
     summarizer = VetrSummarizer(args.directory, config)
     summarizer.summarize()

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from pathlib import Path
+from typing import Any
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -14,9 +15,12 @@ class VetrSummarizer(object):
         self.accordion_items = []
 
     def load_json_files(self):
-        for json_file in self.directory.glob("*.json"):
+        json_files = list(self.directory.glob("*.json"))
+        if not json_files:
+            raise SystemExit(f"WARNING: No JSON files found in {self.directory}!")
+        for json_file in json_files:
             data: dict = json.loads(json_file.read_text())
-            if int(data.get("totalCount", 0)):
+            if int(data.get("totalCount", 0)) or data.get("imdata") != []:
                 key = json_file.stem
                 rows = self._process_json_data(data, key)
                 if rows:
@@ -35,7 +39,7 @@ class VetrSummarizer(object):
                 rows.append(valuable_attrs)
         return rows
 
-    def _add_accordion_item(self, title: str, rows: list[dict]):
+    def _add_accordion_item(self, title: str, rows: list[dict[str, Any]]):
         headers = rows[0].keys()
         table_headers = [{"header": header} for header in headers]
         table_rows = [
@@ -49,10 +53,9 @@ class VetrSummarizer(object):
             }
         )
 
-    def generate_report(self, output_file: Path = None):
+    def generate_report(self):
         if not self.accordion_items:
-            print("WARNING: No data available to generate HTML report!")
-            return
+            raise SystemExit("WARNING: No data available to generate an HTML report!")
 
         environment = Environment(
             loader=FileSystemLoader(Path(__file__).parent / "templates")
@@ -63,7 +66,7 @@ class VetrSummarizer(object):
         output_file.write_text(
             html_template.render(accordion_items=self.accordion_items)
         )
-        print(f"HTML report is written to {output_file.resolve()}")
+        print(f"HTML report is written to '{output_file.resolve()}'")
 
     def summarize(self):
         self.load_json_files()
