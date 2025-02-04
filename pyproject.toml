@@ -41,13 +41,13 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-dependencies = ["jinja2>=3.0.0"]
+dependencies = ["jinja2>=3.1.0"]
 
 [project.optional-dependencies]
 dev = ["pre-commit", "bumpver", "black", "isort"]
 
 [project.urls]
-Homepage = "https://github.com/Tes3awy/vetr-summarizer"
+Homepage = "https://pypi.org/project/vetr-summarizer/"
 Repository = "https://github.com/Tes3awy/vetr-summarizer"
 Issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
 "Say Thanks!" = "https://saythanks.io/to/Tes3awy"
