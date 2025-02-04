@@ -2,6 +2,12 @@
 
 > **NOTE:** `vetr-summarizer` follows the ([semver](https://semver.org/)) Semantic Versioning 2.0.0 specification meaning it has three numerical version parts with distinct rules `MAJOR.MINOR.PATCH`
 
+## 0.3.3
+
+- Improve the error handling.
+- Minor edits to the template files.
+- Update README.
+
 ## 0.3.2
 
 - Add search functionality for class objects.
