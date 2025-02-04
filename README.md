@@ -13,14 +13,16 @@
 
 A Python package for visualizing ACI vetR JSON data from [vetr-collector](https://github.com/brightpuddle/vetr-collector)
 
-## Table of Contents
+# Table of Contents
 
-1. [What is vetR Summarizer?](#what-is-vetr-summarizer)
-2. [Objective](#objective)
-3. [How it Works](#how-it-works)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Use Case](#use-case)
+- [What is vetR Summarizer?](#what-is-vetr-summarizer)
+- [Objective](#objective)
+- [How it works](#how-it-works)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Use Case](#use-case)
+- [Author(s)](#authors)
+- [Contributions](#contributions)
 
 ![ACI](https://github.com/Tes3awy/vetr-summarizer/raw/main/assets/aci.jpg)
 
@@ -32,7 +34,7 @@ This tool summarizes data from any APIC collected by [vetr-collector](https://gi
 
 This tool processes data collected by [vetr-collector](https://github.com/brightpuddle/vetr-collector) for the ACI health check and displays it in a pretty HTML tabluar format. This tool can also be run from any computer having `aci-vetr-data` collected from any APIC.
 
-The `aci-vetr-data` directory you get from `vetr-collector v3.3.0` includes **91** raw JSON files.
+In `vetr-collector` v3.3.0, the `aci-vetr-data` directory you get from includes around **91** JSON files.
 
 ```bash
 $ ls aci-vetr-data
@@ -62,9 +64,9 @@ Once the analysis is complete, the tool creates a `vetr-summary.html` file. This
 
 Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/policy-model-guide/b-Cisco-ACI-Policy-Model-Guide.html#id_107445__d54e1142) include unnecessary configuration properties. Some of these  properties: `extMngdBy`, `childAction`, `userdom`, etc. These unnecessary properties (key-value pairs) are excluded from the report for a neater representation of the output in the HTML file. 
 
-> _All excluded keys can be found in [`config/excluded_keys`](https://github.com/Tes3awy/vetr-summarizer/tree/main/src/vetr_summarizer/config) file._ You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_.
+> All excluded keys can be found in [`config/excluded_keys`](https://github.com/Tes3awy/vetr-summarizer/tree/main/src/vetr_summarizer/config) file. You can also customize these keys-to-exclude according to your own case. _An empty excluded\_keys file will not exclude any keys_.
 
-> Raw JSON files with empty `imdata` and `totalCount` equal to `0` are not presented in the HTML `vetr-summary.html` summary report.
+> Raw JSON files with empty `imdata` (i.e. `"[]"`) and `totalCount` equal to `"0"` are not presented in the HTML `vetr-summary.html` summary report.
 
 ## Installation
 
@@ -119,18 +121,18 @@ HTML output is written to /path/to/vetr-summary.html
 ```bash
 $ vetr-summarizer -x custom_excluded_keys "/path/to/aci-vetr-data"
 
-HTML output is written to /path/to/vetr-summary.html
+HTML output is written to '/path/to/vetr-summary.html'
 ```
 
 ## Use Case
 
-I was once going through the Cisco Community and found a [question](https://community.cisco.com/t5/application-centric-infrastructure/vetr-zip-logs/td-p/4804529), what is actually vetr zip logs? 
+I was once going through the Cisco Community searching for an answer to my ACI fabric issue, and I came across that question: [VetR Zip logs](https://community.cisco.com/t5/application-centric-infrastructure/vetr-zip-logs/td-p/4804529), what is actually vetr zip logs?
 
 ![Question](https://github.com/Tes3awy/vetr-summarizer/raw/main/assets/q.jpg)
 
-So, I decided to try `vetr-collector` on an environment. But, I got to open each raw JSON file to check whether it has objects and was time-consuming going through all the files. So, I made this package to summarize the output from `vetr-collector` in a pretty HTML tabular format.
+So, I decided to try `vetr-collector` on an environment. But, I had to open each JSON file to check whether it has objects or not and read the entire JSON file if it has valuable data, and that was time-consuming. So, I made this package to summarize the output from `vetr-collector` in a pretty HTML tabular format.
 
-## Author
+## Author(s)
 
 [Osama Abbas](https://www.linkedin.com/in/oabbas/)
 
