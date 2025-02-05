@@ -70,7 +70,7 @@ Almost all [MOs](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/a
 
 ## Installation
 
-Install from PyPi
+Install from [PyPi](https://pypi.org/project/vetr-summarizer/)
 
 > System-wide
 
