@@ -10,7 +10,7 @@ authors = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 maintainers = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 license = "MIT"
 license-files = ["LICENSE", "AUTHORS.md"]
-readme = "README.md"
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9.0, <4"
 keywords = [
     "Cisco",
@@ -31,7 +31,7 @@ classifiers = [
     "Topic :: Software Development :: Quality Assurance",
     "Topic :: System :: Networking :: Monitoring",
     "Topic :: System :: Systems Administration",
-    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
@@ -39,6 +39,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Typing :: Typed",
 ]
 dependencies = ["jinja2>=3.1.0"]
@@ -48,7 +49,7 @@ dev = ["pre-commit", "bumpver", "black", "isort"]
 
 [project.urls]
 homepage = "https://pypi.org/project/vetr-summarizer/"
-sourcecode = "https://github.com/Tes3awy/vetr-summarizer"
+Repository = "https://github.com/Tes3awy/vetr-summarizer"
 download = "https://github.com/Tes3awy/vetr-summarizer/archive/refs/tags/0.3.3.zip"
 changelog = "https://github.com/Tes3awy/vetr-summarizer/blob/main/CHANGELOG.md"
 issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
