@@ -49,7 +49,7 @@ dev = ["pre-commit", "bumpver", "black", "isort"]
 [project.urls]
 homepage = "https://pypi.org/project/vetr-summarizer/"
 Repository = "https://github.com/Tes3awy/vetr-summarizer"
-download = "https://github.com/Tes3awy/vetr-summarizer/archive/refs/tags/0.3.3.zip"
+download = "https://github.com/Tes3awy/vetr-summarizer/archive/refs/tags/0.3.4.zip"
 changelog = "https://github.com/Tes3awy/vetr-summarizer/blob/main/CHANGELOG.md"
 issues = "https://github.com/Tes3awy/vetr-summarizer/issues"
 "Say Thanks!" = "https://saythanks.io/to/Tes3awy"
@@ -80,7 +80,7 @@ where = ["src"]
 vetr-summarizer = "vetr_summarizer.__main__:main"
 
 [tool.bumpver]
-current_version = "0.3.3"
+current_version = "0.3.4"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
