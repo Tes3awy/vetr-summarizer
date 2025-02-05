@@ -8,8 +8,7 @@ dynamic = ["version"]
 description = "A Python package for visualizing ACI vetR JSON data"
 authors = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
 maintainers = [{ name = "Osama Abbas", email = "oabbas2512@gmail.com" }]
-license = "MIT"
-license-files = ["LICENSE", "AUTHORS.md"]
+license = { text = "MIT" }
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9.0, <4"
 keywords = [
@@ -42,7 +41,7 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Typing :: Typed",
 ]
-dependencies = ["jinja2>=3.1.0"]
+dependencies = ['jinja2>=3.1.0; python_version>="3.9"']
 
 [project.optional-dependencies]
 dev = ["pre-commit", "bumpver", "black", "isort"]
